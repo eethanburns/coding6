@@ -1,10 +1,12 @@
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const audioContext = new window.AudioContext();
 
 const oscillator = audioContext.createOscillator();
 
-oscillator.frequency.value = 100;
+const updateFrequency = function (f) {
+  oscillator.frequency.value = f;
+};
 
-oscillator.type = "sawtooth";
+oscillator.type = "sine";
 
 let myGain = audioContext.createGain();
 myGain.gain.value = 0.5;
